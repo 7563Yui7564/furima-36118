@@ -27,18 +27,16 @@ Things you may want to cover:
 
 # users テーブル設計
 
-| Column             | Type    | Options     |
-| ------------------ | ------- | ----------- |
-| nickname           | string  | null: false |
-| email              | string  | null: false |
-| encrypted_password | integer | null: false |
-| last_name          | string  | null: false |
-| first_name         | string  | null: false |
-| last_name_reading  | string  | null: false |
-| first_name_reading | string  | null: false |
-| birth_year         | integer | null: false |
-| birth_month        | integer | null: false |
-| birth_day          | integer | null: false |
+| Column             | Type    | Options                   |
+| ------------------ | ------- | ------------------------- |
+| nickname           | string  | null: false               |
+| email              | string  | null: false               |
+| encrypted_password | string  | null: false, unique: true |
+| last_name          | string  | null: false               |
+| first_name         | string  | null: false               |
+| last_name_kana     | string  | null: false               |
+| first_name_kana    | string  | null: false               |
+| birth_date         | integer | null: false               |
 
 ### Association
 
@@ -48,28 +46,25 @@ Things you may want to cover:
 
 # items テーブル設計
 
-| Column           | Type       | Options     |
-| ---------------- | ---------- | ----------- |
-| image            |            |             |
-| item_name        | string     | null: false |
-| item_description | text       | null: false |
-| item_category    | string     | null: false |
-| item_condition   | string     | null: false |
-| delivery_burden  | string     | null: false |
-| delivery_area    | string     | null: false |
-| delivery_day     | integer    | null: false |
-| sale_price       | integer    | null: false |
-| sale_commission  | integer    | null: false |
-| sale_profit      | integer    | null: false |
-| user             | references | null: false |
+| Column             | Type       | Options                       |
+| ------------------ | ---------- | ----------------------------- |
+| name               | string     | null: false                   |
+| description        | text       | null: false                   |
+| category_id        | integer    | null: false                   |
+| condition_id       | integer    | null: false                   |
+| delivery_burden_id | integer    | null: false                   |
+| prefecture_id      | integer    | null: false                   |
+| delivery_day_id    | integer    | null: false                   |
+| price              | integer    | null: false                   |
+| user               | references | null: false, foreign_key:true |
 
 ### Association
 
 - belongs_to :user
 - has_one :purchase
-- has_one :attached :image
+- has_one_attached :image
 
-# purchases テーブル設計
+# orders テーブル設計
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
@@ -90,8 +85,8 @@ Things you may want to cover:
 | prefecture    | integer | null: false |
 | city          | string  | null: false |
 | house_number  | string  | null: false |
-| building_name | string  | null: false |
-| phone number  | integer | null: false |
+| building_name | string  |             |
+| phone_number  | string  | null: false |
 
 ### Association
 
