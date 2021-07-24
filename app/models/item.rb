@@ -14,7 +14,7 @@ class Item < ApplicationRecord
     # 価格は、半角数字での入力が必須であること
     validates :price, format: { with: /\A[0-9]+\z/, message: "is invalid. Input half-width characters." }
   end
-  with_options numericality: { other_than: 1, message: "can't be blanck"}
+  with_options numericality: { other_than: 1, message: "can't be blanck"} do
     validates :category_id
     validates :condition_id
     validates :delivery_burden_id
