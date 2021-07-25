@@ -1,7 +1,7 @@
 require 'rails_helper'
 RSpec.describe Item, type: :model do
   before do
-   @item = FactoryBot.build(:item)
+    @item = FactoryBot.build(:item)
   end
 
   describe '出品の保存' do
@@ -66,19 +66,19 @@ RSpec.describe Item, type: :model do
     it 'priceが全角数字では保存できない' do
       @item.price = '３００'
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price is invalid. Input half-width characters.")
+      expect(@item.errors.full_messages).to include('Price is invalid. Input half-width characters.')
     end
 
     it 'priceが300円未満では保存できない' do
       @item.price = '299'
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price is out of setting range.")
+      expect(@item.errors.full_messages).to include('Price is out of setting range.')
     end
 
     it 'priceが10,000,000円未満では保存できない' do
       @item.price = '10000000'
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price is out of setting range.")
+      expect(@item.errors.full_messages).to include('Price is out of setting range.')
     end
   end
 end
