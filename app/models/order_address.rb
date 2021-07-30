@@ -10,7 +10,7 @@ class OrderAddress
     validates :city
     validates :house_number
     #電話番号は、10桁以上11桁以内の半角数値のみ保存可能なこと
-    validates :phone_number, format: {with: /\A[0-9]+\z/, message: 'is invalid. Input only number'}
+    validates :phone_number, numericality: {message: 'is invalid. Input only number'}
   end
   validates :prefecture_id, numericality: {other_than: 1, message: "can't be blank"}
 
