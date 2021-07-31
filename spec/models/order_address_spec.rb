@@ -56,6 +56,18 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include('Phone number is invalid. Input only number')
       end
 
+      it 'phone_numberが英数混合だと保存できないこと' do
+        @order_address.phone_number = '080132484yy'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid. Input only number')
+      end
+
+      it 'phone_numberが12桁以上だと保存できないこと' do
+        @order_address.phone_number = '080132484578'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
+      end
+
       it 'prefecture_idが選択されていないと保存できないこと' do
         @order_address.prefecture_id = 1
         @order_address.valid?
