@@ -12,3 +12,4 @@ window.addEventListener('load', () => {
  profit.innerHTML = (Math.floor(inputValue - price_result))
  }) 
 })
+

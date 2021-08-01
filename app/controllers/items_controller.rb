@@ -37,13 +37,15 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     redirect_to root_path
-  end  
+  end
   
   private
 
   def contributor_confirmation
-    redirect_to root_path unless current_user == @item.user
-  end  
+    if current_user != @item.user || @item.order.present?
+      redirect_to root_path
+    end
+  end 
 
   def set_item
     @item = Item.find(params[:id])
