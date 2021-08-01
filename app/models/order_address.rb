@@ -14,7 +14,7 @@ class OrderAddress
     validates :phone_number, numericality: {message: 'is invalid. Input only number'} 
   end
   validates :prefecture_id, numericality: {other_than: 1, message: "can't be blank"}
-    validates :phone_number, length: { maximum: 11 }
+  validates :phone_number, length: { minimum: 10, maximum: 11 }
 
   def save
     # 購入情報を保存し、変数orderに代入する
