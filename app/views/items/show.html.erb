@@ -13,6 +13,7 @@
       <div class="sold-out">
         <span>Sold Out!!</span> 
       </div>
+      <% end %>
       <%# //商品が売れている場合は、sold outを表示しましょう %>
     </div>
     <div class="item-price-box">
@@ -22,7 +23,6 @@
       <span class="item-postage">
         <%= @item.delivery_burden.name %>
       </span>
-      <% end %>
     </div>
 
     <% if user_signed_in? && @item.order.blank? %>
